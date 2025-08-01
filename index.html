@@ -20,7 +20,7 @@
 
         body {
             font-family: "Jost", sans-serif;
-            background: url('https://files.cloudkuimages.guru/images/YuiD2Eqk.jpg') center center;
+            background: url('https://files.cloudkuimages.guru/videos/8sLCHkpt.mp4') center center;
             background-size: cover;
             background-attachment: fixed;
             background-repeat: no-repeat;
@@ -475,30 +475,6 @@
             background: rgba(255, 255, 255, 0.8);
         }
 
-        /* Auto-update indicator */
-        .update-indicator {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(0, 255, 0, 0.8);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .update-indicator.show {
-            opacity: 1;
-        }
-
-        .update-indicator.error {
-            background: rgba(255, 0, 0, 0.8);
-        }
-
         @media (max-width: 768px) {
             .card {
                 max-width: 350px;
@@ -520,11 +496,6 @@
     </style>
 </head>
 <body>
-    <!-- Auto-update indicator -->
-    <div id="updateIndicator" class="update-indicator">
-        <i class="fas fa-sync-alt"></i> <span id="updateText">Checking for updates...</span>
-    </div>
-
     <div class="card" data-state="#about">
         <div class="card-header">
             <div class="card-cover"></div>
@@ -537,7 +508,7 @@
             <div class="card-section is-active" id="about">
                 <div class="card-content">
                     <div class="card-subtitle">About Me</div>
-                    <p class="card-text" id="about-text">
+                    <p class="card-text">
                         Saya akan kembali, kembali menjadi rakyat biasa, kembali ke kehidupan saya seperti dulu.
                     </p>
                 </div>
@@ -548,7 +519,7 @@
                     <a href="https://whatsapp.com/channel/gaada" target="_blank">
                         <i class="fas fa-broadcast-tower"></i>
                     </a>
-                    <a href="https://github.com/RanggaKelaz" target="_blank">
+                    <a href="https://github.com/hengker" target="_blank">
                         <i class="fab fa-github"></i>
                     </a>
                     <a href="mailto:ranzryu5@gmail.com">
@@ -560,12 +531,13 @@
             <div class="card-section" id="progress">
                 <div class="card-content">
                     <div class="card-subtitle">Progress Timeline</div>
-                    <div class="card-timeline" id="timeline-content">
+                    <div class="card-timeline">
                         <div class="card-item" data-year="2025">
                             <div class="card-item-title">Kembali</div>
                             <div class="card-item-desc">
                                 Memulai perjalanan sebagai rakyat biasa yang ingin kehidupan santai dan tenang.
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -574,329 +546,196 @@
             <div class="card-section" id="projects">
                 <div class="card-content">
                     <div class="card-subtitle">My Projects</div>
-                    <div id="projects-content">
-                        <div class="project-card">
-                            <div class="project-title">Portfolio Website</div>
-                            <div class="project-desc">
-                                Website portfolio simple yang dibuat menggunakan HTML, CSS, dan JavaScript. 
-                                Menampilkan informasi personal, progress timeline, dan kontak dengan design modern.
-                            </div>
+                    <div class="project-card">
+                        <div class="project-title">Portfolio Website</div>
+                        <div class="project-desc">
+                            Website portfolio simple yang dibuat menggunakan HTML, CSS, dan JavaScript. 
+                            Menampilkan informasi personal, progress timeline, dan kontak dengan design modern.
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="card-section" id="saweria">
-                <div class="card-content">
-                    <div class="card-subtitle">Support Me</div>
-                    <p class="card-text">
-                        Jika kamu merasa terbantu dengan project atau konten yang saya buat, 
-                        kamu bisa mendukung saya melalui platform berikut:
-                    </p>
-                    <div class="card-contact-wrapper">
-                        <div class="card-contact">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                                <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                                <line x1="15" y1="9" x2="15.01" y2="9"></line>
-                            </svg>
-                            <span>Saweria: saweria.co/ranzryuu</span>
-                        </div>
-                        <div class="card-contact">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                                <line x1="8" y1="21" x2="16" y2="21"></line>
-                                <line x1="12" y1="17" x2="12" y2="21"></line>
-                            </svg>
-                            <span>Trakteer: trakteer.id/ranzryuu</span>
-                        </div>
-                    </div>
-                    <button class="contact-me" onclick="window.open('https://saweria.co/ranzryuu', '_blank')">
-                        Support via Saweria
-                    </button>
                 </div>
             </div>
 
             <div class="card-section" id="contact">
                 <div class="card-content">
                     <div class="card-subtitle">Get In Touch</div>
-                    <p class="card-text">
-                        Jangan ragu untuk menghubungi saya jika ada pertanyaan, 
-                        kolaborasi, atau sekadar ingin ngobrol santai.
-                    </p>
                     <div class="card-contact-wrapper">
                         <div class="card-contact">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
                             </svg>
-                            <span>ranzryu5@gmail.com</span>
+                            Indonesia
                         </div>
                         <div class="card-contact">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M9 19c-5 0-8-3-8-8s3-8 8-8 8 3 8 8-3 8-8 8z"></path>
-                                <path d="M8.5 8.5c0 1-1 1-1 1s1 0 1"></path>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                             </svg>
-                            <span>GitHub: @RanggaKelaz</span>
+                            Tidak Ada
                         </div>
                         <div class="card-contact">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <path d="m22 6-10 7L2 6"/>
                             </svg>
-                            <span>WhatsApp: Available on request</span>
+                            ranzryu5@gmail.com
                         </div>
+                        <a href="https://wa.me/number" target="_blank">
+                            <button class="contact-me">Contact Me</button>
+                        </a>
                     </div>
-                    <button class="contact-me" onclick="window.open('mailto:ranzryu5@gmail.com', '_blank')">
-                        Send Email
-                    </button>
                 </div>
             </div>
-        </div>
 
-        <div class="card-buttons">
-            <button data-section="#about" class="is-active">About</button>
-            <button data-section="#progress">Progress</button>
-            <button data-section="#projects">Projects</button>
-            <button data-section="#saweria">Support</button>
-            <button data-section="#contact">Contact</button>
+            <div class="card-section" id="saweria">
+                <div class="card-content">
+                    <div class="card-subtitle">Dukung Saya</div>
+                    <p class="card-text" style="text-align: center; margin-bottom: 20px;">
+                        Berikan dukungan melalui Saweria untuk membantu pengembangan konten
+                    </p>
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <img src="https://files.catbox.moe/vnobwu.jpg" alt="Saweria QR Code" style="width: 150px; height: 150px; border-radius: 15px; border: 2px solid #ff4757; box-shadow: 0 8px 16px rgba(255, 71, 87, 0.3);">
+                    </div>
+                    <div style="text-align: center;">
+                        <a href="https://saweria.co/ranzryuu" target="_blank">
+                            <button class="contact-me" style="background: linear-gradient(135deg, #ff6b35, #f7931e); margin-top: 10px;">
+                                <i class="fas fa-heart" style="margin-right: 8px;"></i>
+                                Donasi via Saweria
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-buttons">
+                <button data-section="#about" class="is-active">Home</button>
+                <button data-section="#progress">Progress</button>
+                <button data-section="#projects">Projects</button>
+                <button data-section="#contact">Contact</button>
+                <button data-section="#saweria">Saweria</button>
+            </div>
         </div>
     </div>
 
+    <audio id="backgroundMusic" loop>
+    <source src="https://files.catbox.moe/yibdqq.mp3" type="audio/mpeg">
+</audio>
+
     <script>
-        // Configuration for auto-update - SINGLE URL VERSION
-        const CONFIG = {
-            // Single GitHub raw file URL for all content updates
-            contentSource: 'https://raw.githubusercontent.com/RanggaKelaz/theman/main/plug.json',
-            // Update interval in milliseconds (default: 5 minutes)
-            updateInterval: 5 * 60 * 1000,
-            // Enable/disable auto-update
-            autoUpdateEnabled: true
-        };
+    const buttons = document.querySelectorAll(".card-buttons button");
+    const sections = document.querySelectorAll(".card-section");
+    const card = document.querySelector(".card");
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    let musicStarted = false;
 
-        // Auto-update system for single URL
-        class AutoUpdater {
-            constructor() {
-                this.lastUpdateTime = localStorage.getItem('lastUpdateTime') || 0;
-                this.updateIndicator = document.getElementById('updateIndicator');
-                this.updateText = document.getElementById('updateText');
-                this.lastContentHash = localStorage.getItem('lastContentHash') || '';
-                
-                if (CONFIG.autoUpdateEnabled) {
-                    this.startAutoUpdate();
-                }
+    // GitHub raw URLs - ganti dengan URL repository Anda
+    const GITHUB_BASE_URL = 'https://raw.githubusercontent.com/rangga/main/';
+
+    // Fungsi untuk fetch data dari GitHub (dengan cache buster)
+    async function fetchDataFromGitHub(filename) {
+        try {
+            const cacheBuster = `?t=${Date.now()}`;
+            const response = await fetch(GITHUB_BASE_URL + filename + cacheBuster);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
-
-            showIndicator(message, isError = false) {
-                this.updateText.textContent = message;
-                this.updateIndicator.className = `update-indicator show ${isError ? 'error' : ''}`;
-                
-                setTimeout(() => {
-                    this.updateIndicator.classList.remove('show');
-                }, 3000);
-            }
-
-            async fetchContent() {
-                try {
-                    const response = await fetch(CONFIG.contentSource, {
-                        cache: 'no-cache',
-                        headers: {
-                            'Cache-Control': 'no-cache'
-                        }
-                    });
-                    
-                    if (!response.ok) {
-                        throw new Error(`HTTP ${response.status}`);
-                    }
-                    
-                    return await response.text();
-                } catch (error) {
-                    console.warn(`Failed to fetch ${CONFIG.contentSource}:`, error);
-                    return null;
-                }
-            }
-
-            // Generate simple hash for content comparison
-            generateHash(content) {
-                let hash = 0;
-                for (let i = 0; i < content.length; i++) {
-                    const char = content.charCodeAt(i);
-                    hash = ((hash << 5) - hash) + char;
-                    hash = hash & hash; // Convert to 32-bit integer
-                }
-                return hash.toString();
-            }
-
-            updateAboutSection(data) {
-                if (data.about) {
-                    const aboutText = document.getElementById('about-text');
-                    if (aboutText) {
-                        aboutText.textContent = data.about;
-                        return true;
-                    }
-                }
-                return false;
-            }
-
-            updateTimelineSection(data) {
-                if (data.timeline && Array.isArray(data.timeline)) {
-                    const timelineContainer = document.getElementById('timeline-content');
-                    
-                    if (timelineContainer) {
-                        const newHTML = data.timeline.map(item => `
-                            <div class="card-item" data-year="${item.year}">
-                                <div class="card-item-title">${item.title}</div>
-                                <div class="card-item-desc">${item.description}</div>
-                            </div>
-                        `).join('');
-                        
-                        timelineContainer.innerHTML = newHTML;
-                        return true;
-                    }
-                }
-                return false;
-            }
-
-            updateProjectsSection(data) {
-                if (data.projects && Array.isArray(data.projects)) {
-                    const projectsContainer = document.getElementById('projects-content');
-                    
-                    if (projectsContainer) {
-                        const newHTML = data.projects.map(project => `
-                            <div class="project-card">
-                                <div class="project-title">${project.title}</div>
-                                <div class="project-desc">${project.description}</div>
-                            </div>
-                        `).join('');
-                        
-                        projectsContainer.innerHTML = newHTML;
-                        return true;
-                    }
-                }
-                return false;
-            }
-
-            async checkForUpdates() {
-                this.showIndicator('Checking for updates...');
-                
-                try {
-                    const content = await this.fetchContent();
-                    
-                    if (!content) {
-                        this.showIndicator('Failed to fetch content', true);
-                        return;
-                    }
-
-                    // Generate hash for content comparison
-                    const contentHash = this.generateHash(content);
-                    
-                    // Check if content has changed
-                    if (contentHash === this.lastContentHash) {
-                        this.showIndicator('No updates available');
-                        return;
-                    }
-
-                    // Parse JSON content
-                    let data;
-                    try {
-                        data = JSON.parse(content);
-                    } catch (parseError) {
-                        console.warn('Failed to parse JSON content:', parseError);
-                        this.showIndicator('Invalid content format', true);
-                        return;
-                    }
-
-                    // Update all sections
-                    const updates = [
-                        this.updateAboutSection(data),
-                        this.updateTimelineSection(data),
-                        this.updateProjectsSection(data)
-                    ];
-                    
-                    const hasUpdates = updates.some(updated => updated);
-                    
-                    if (hasUpdates) {
-                        this.showIndicator('Content updated!');
-                        this.lastContentHash = contentHash;
-                        localStorage.setItem('lastContentHash', contentHash);
-                        localStorage.setItem('lastUpdateTime', Date.now());
-                    } else {
-                        this.showIndicator('No content changes');
-                    }
-                    
-                } catch (error) {
-                    console.error('Update check failed:', error);
-                    this.showIndicator('Update check failed', true);
-                }
-            }
-
-            startAutoUpdate() {
-                // Check for updates on page load
-                setTimeout(() => this.checkForUpdates(), 2000);
-                
-                // Set up periodic updates
-                setInterval(() => {
-                    this.checkForUpdates();
-                }, CONFIG.updateInterval);
-            }
-
-            // Manual update trigger
-            manualUpdate() {
-                this.checkForUpdates();
-            }
+            return await response.json();
+        } catch (error) {
+            console.error(`Error fetching ${filename}:`, error);
+            return null;
         }
+    }
 
-        // Navigation system
-        class Navigation {
-            constructor() {
-                this.card = document.querySelector('.card');
-                this.buttons = document.querySelectorAll('.card-buttons button');
-                this.sections = document.querySelectorAll('.card-section');
-                
-                this.initNavigation();
-            }
+    // Fungsi untuk update progress timeline
+    async function updateProgressTimeline() {
+        const progressData = await fetchDataFromGitHub('progress.json');
+        if (!progressData) return;
 
-            initNavigation() {
-                this.buttons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        const targetSection = button.getAttribute('data-section');
-                        this.showSection(targetSection);
-                    });
-                });
-            }
+        const timelineContainer = document.querySelector('.card-timeline');
+        if (!timelineContainer) return;
 
-            showSection(sectionId) {
-                // Update card state
-                this.card.setAttribute('data-state', sectionId);
-                this.card.classList.add('is-active');
+        // Clear existing items
+        timelineContainer.innerHTML = '';
 
-                // Update buttons
-                this.buttons.forEach(btn => btn.classList.remove('is-active'));
-                document.querySelector(`[data-section="${sectionId}"]`).classList.add('is-active');
-
-                // Update sections
-                this.sections.forEach(section => section.classList.remove('is-active'));
-                document.querySelector(sectionId).classList.add('is-active');
-            }
-        }
-
-        // Initialize systems when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            const navigation = new Navigation();
-            const autoUpdater = new AutoUpdater();
-            
-            // Expose manual update function globally
-            window.manualUpdate = () => autoUpdater.manualUpdate();
-            
-            // Add keyboard shortcut for manual update (Ctrl+U)
-            document.addEventListener('keydown', (e) => {
-                if (e.ctrlKey && e.key === 'u') {
-                    e.preventDefault();
-                    autoUpdater.manualUpdate();
-                }
-            });
+        // Add new items
+        progressData.forEach(item => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'card-item';
+            itemDiv.setAttribute('data-year', item.year);
+            itemDiv.innerHTML = `
+                <div class="card-item-title">${item.title}</div>
+                <div class="card-item-desc">${item.description}</div>
+            `;
+            timelineContainer.appendChild(itemDiv);
         });
-    </script>
+    }
+
+    // Fungsi untuk update projects
+    async function updateProjects() {
+        const projectsData = await fetchDataFromGitHub('projects.json');
+        if (!projectsData) return;
+
+        const projectsContainer = document.querySelector('#projects .card-content');
+        if (!projectsContainer) return;
+
+        // Hapus elemen project lama
+        const existingCards = projectsContainer.querySelectorAll('.project-card');
+        existingCards.forEach(card => card.remove());
+
+        // Tambahkan project baru
+        projectsData.forEach(project => {
+            const projectDiv = document.createElement('div');
+            projectDiv.className = 'project-card';
+            projectDiv.innerHTML = `
+                <div class="project-title">${project.title}</div>
+                <div class="project-desc">${project.description}</div>
+            `;
+            projectsContainer.appendChild(projectDiv);
+        });
+    }
+
+    // Load data saat halaman dibuka
+    document.addEventListener('DOMContentLoaded', async () => {
+        await updateProgressTimeline();
+        await updateProjects();
+
+        // ⏱️ Auto-refresh data setiap 5 menit (opsional)
+        setInterval(async () => {
+            await updateProgressTimeline();
+            await updateProjects();
+        }, 5 * 60 * 1000); // 5 menit
+    });
+
+    // Handle tombol navigasi card
+    const handleButtonClick = e => {
+        const targetSection = e.target.getAttribute("data-section");
+        const section = document.querySelector(targetSection);
+
+        if (!musicStarted) {
+            backgroundMusic.play().catch(e => console.log('Music play failed:', e));
+            musicStarted = true;
+        }
+
+        if (targetSection !== "#about") {
+            card.classList.add("is-active");
+        } else {
+            card.classList.remove("is-active");
+        }
+
+        card.setAttribute("data-state", targetSection);
+
+        sections.forEach(s => s.classList.remove("is-active"));
+        buttons.forEach(b => b.classList.remove("is-active"));
+
+        e.target.classList.add("is-active");
+        section.classList.add("is-active");
+    };
+
+    buttons.forEach(btn => {
+        btn.addEventListener("click", handleButtonClick);
+    });
+
+    backgroundMusic.volume = 0.3;
+</script>
 </body>
 </html>
-
