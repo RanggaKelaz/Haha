@@ -619,120 +619,108 @@
 </audio>
 
     <script>
-    const buttons = document.querySelectorAll(".card-buttons button");
+        const buttons = document.querySelectorAll(".card-buttons button");
     const sections = document.querySelectorAll(".card-section");
     const card = document.querySelector(".card");
     const backgroundMusic = document.getElementById('backgroundMusic');
     let musicStarted = false;
 
-    // GitHub raw URLs - ganti dengan URL repository Anda
     const GITHUB_BASE_URL = 'https://raw.githubusercontent.com/RanggaKelaz/theman/main/';
 
-    // Fungsi untuk fetch data dari GitHub (dengan cache buster)
     async function fetchDataFromGitHub(filename) {
-        try {
-            const cacheBuster = `?t=${Date.now()}`;
-            const response = await fetch(GITHUB_BASE_URL + filename + cacheBuster);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return await response.json();
-        } catch (error) {
-            console.error(`Error fetching ${filename}:`, error);
-            return null;
-        }
+      try {
+        const cacheBuster = `?t=${Date.now()}`;
+        const response = await fetch(GITHUB_BASE_URL + filename + cacheBuster);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        return await response.json();
+      } catch (error) {
+        console.error(`Error fetching ${filename}:`, error);
+        return null;
+      }
     }
 
-    // Fungsi untuk update progress timeline
-    async function updateProgressTimeline() {
-        const progressData = await fetchDataFromGitHub('progress.json');
-        if (!progressData) return;
+    // Timeline Infinite Scroll
+    let timelinePage = 1;
+    const timelineContainer = document.querySelector('.card-timeline');
 
-        const timelineContainer = document.querySelector('.card-timeline');
-        if (!timelineContainer) return;
-
-        // Clear existing items
-        timelineContainer.innerHTML = '';
-
-        // Add new items
-        progressData.forEach(item => {
-            const itemDiv = document.createElement('div');
-            itemDiv.className = 'card-item';
-            itemDiv.setAttribute('data-year', item.year);
-            itemDiv.innerHTML = `
-                <div class="card-item-title">${item.title}</div>
-                <div class="card-item-desc">${item.description}</div>
-            `;
-            timelineContainer.appendChild(itemDiv);
-        });
+    async function loadMoreTimeline() {
+      const data = await fetchDataFromGitHub(`progress-page-${timelinePage}.json`);
+      if (!data || data.length === 0) return;
+      data.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'card-item';
+        div.setAttribute('data-year', item.year);
+        div.innerHTML = `<div class="card-item-title">${item.title}</div><div class="card-item-desc">${item.description}</div>`;
+        timelineContainer.appendChild(div);
+      });
+      timelinePage++;
     }
 
-    // Fungsi untuk update projects
-    async function updateProjects() {
-        const projectsData = await fetchDataFromGitHub('projects.json');
-        if (!projectsData) return;
+    // Project Infinite Scroll
+    let projectsPage = 1;
+    const projectsContainer = document.querySelector('#projects .card-content');
 
-        const projectsContainer = document.querySelector('#projects .card-content');
-        if (!projectsContainer) return;
-
-        // Hapus elemen project lama
-        const existingCards = projectsContainer.querySelectorAll('.project-card');
-        existingCards.forEach(card => card.remove());
-
-        // Tambahkan project baru
-        projectsData.forEach(project => {
-            const projectDiv = document.createElement('div');
-            projectDiv.className = 'project-card';
-            projectDiv.innerHTML = `
-                <div class="project-title">${project.title}</div>
-                <div class="project-desc">${project.description}</div>
-            `;
-            projectsContainer.appendChild(projectDiv);
-        });
+    async function loadMoreProjects() {
+      const data = await fetchDataFromGitHub(`projects-page-${projectsPage}.json`);
+      if (!data || data.length === 0) return;
+      data.forEach(project => {
+        const div = document.createElement('div');
+        div.className = 'project-card';
+        div.innerHTML = `<div class="project-title">${project.title}</div><div class="project-desc">${project.description}</div>`;
+        projectsContainer.appendChild(div);
+      });
+      projectsPage++;
     }
 
-    // Load data saat halaman dibuka
     document.addEventListener('DOMContentLoaded', async () => {
-        await updateProgressTimeline();
-        await updateProjects();
+      await loadMoreTimeline();
+      await loadMoreProjects();
 
-        // ⏱️ Auto-refresh data setiap 5 menit (opsional)
-        setInterval(async () => {
-            await updateProgressTimeline();
-            await updateProjects();
-        }, 5 * 60 * 1000); // 5 menit
+      setInterval(async () => {
+        await loadMoreTimeline();
+        await loadMoreProjects();
+      }, 5 * 60 * 1000);
     });
 
-    // Handle tombol navigasi card
+    // Infinite scroll listener
+    timelineContainer.addEventListener('scroll', () => {
+      if (timelineContainer.scrollTop + timelineContainer.clientHeight >= timelineContainer.scrollHeight - 10) {
+        loadMoreTimeline();
+      }
+    });
+
+    projectsContainer.addEventListener('scroll', () => {
+      if (projectsContainer.scrollTop + projectsContainer.clientHeight >= projectsContainer.scrollHeight - 10) {
+        loadMoreProjects();
+      }
+    });
+
     const handleButtonClick = e => {
-        const targetSection = e.target.getAttribute("data-section");
-        const section = document.querySelector(targetSection);
+      const targetSection = e.target.getAttribute("data-section");
+      const section = document.querySelector(targetSection);
 
-        if (!musicStarted) {
-            backgroundMusic.play().catch(e => console.log('Music play failed:', e));
-            musicStarted = true;
-        }
+      if (!musicStarted) {
+        backgroundMusic.play().catch(e => console.log('Music play failed:', e));
+        musicStarted = true;
+      }
 
-        if (targetSection !== "#about") {
-            card.classList.add("is-active");
-        } else {
-            card.classList.remove("is-active");
-        }
+      targetSection !== "#about"
+        ? card.classList.add("is-active")
+        : card.classList.remove("is-active");
 
-        card.setAttribute("data-state", targetSection);
+      card.setAttribute("data-state", targetSection);
 
-        sections.forEach(s => s.classList.remove("is-active"));
-        buttons.forEach(b => b.classList.remove("is-active"));
+      sections.forEach(s => s.classList.remove("is-active"));
+      buttons.forEach(b => b.classList.remove("is-active"));
 
-        e.target.classList.add("is-active");
-        section.classList.add("is-active");
+      e.target.classList.add("is-active");
+      section.classList.add("is-active");
     };
 
     buttons.forEach(btn => {
-        btn.addEventListener("click", handleButtonClick);
+      btn.addEventListener("click", handleButtonClick);
     });
 
     backgroundMusic.volume = 0.3;
-</script>
-</body>
+  </script></body>
 </html>
